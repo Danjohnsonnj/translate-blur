@@ -52,6 +52,16 @@
       max-width: 980px;
     }
 
+    .button {
+      border-radius: 5px;
+      padding: 10px 15px;
+      background-color: #777;
+      text-transform: uppercase;
+      line-height: 1em;
+      font-size: 11px;
+      letter-spacing: 0.025em;
+    }
+
     .align-center {
       position: absolute;
       left: 50%;
@@ -77,8 +87,10 @@
       <h1>This is some text</h1>
       <p>There has historically been an issue in which text vertically or center aligned via<p>
       <code>position: absolute; left: 50%; transform: translateX(-50%);</code>, <code>position: absolute; top: 50%; transform: translateY(-50%);</code>, or <code>position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);</code>
-      <p>resulted in text that was rendered blurry on devices with a pixel ratio of 1. This would be seen when the positioning context containing element is an odd pixel vlaue in the width and/or height (depending on vertical or horizontal centering), resulting in a fractional pixel value for the positioned element's top or left (again, depending on the axis for centering).
+      <p>resulted in text that was rendered blurry on devices with a pixel ratio of 1. This would be seen when the positioning context containing element is an odd pixel value in the width and/or height (depending on vertical or horizontal centering), resulting in a fractional pixel value for the positioned element's top or left (again, depending on the axis for centering).
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+      <span class="button">Example</span>
     </div>
 
     <div id="DebugPane" class="debug-pane"></div>
