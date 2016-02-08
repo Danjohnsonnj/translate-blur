@@ -1,0 +1,88 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="description" content="Investigate unintended blurring when using CSS translate to center an element or text">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Translate Blur</title>
+
+    <style type="text/css">
+    * {
+      font-family: Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    #DebugPane {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      text-align: right;
+      padding: 10px;
+      color: rgba(255, 255, 255, 0.8);
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    pre {
+      display: inline-block;
+      background: rgba(20, 20, 20, 0.2);
+      padding: 3px 5px;
+      font-family: Courier, serif;
+    }
+
+    .text-block {
+      width: 90%;
+      max-width: 980px;
+    }
+
+    .align-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .align-center {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .align-center.align-middle {
+      transform: translate(-50%, -50%);
+    }
+
+    </style>
+
+  </head>
+
+  <body>
+    <div class="text-block align-center align-middle">
+      <h1>This is some text</h1>
+      <p>There has historically been an issue in which text vertically or center aligned via<p>
+      <pre>position: absolute; left: 50%; transform: translateX(-50%);</pre>, <pre>position: absolute; top: 50%; transform: translateY(-50%);</pre>, or <pre>position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);</pre>
+      <p>resulted in text that was rendered blurry. This would be seen when the positioning context containing element is an odd pixel vlaue in the width and/or height (depending on vertical or horizontal centering), resulting in a fractional pixel value for the positioned element's top or left (again, depending on the axis for centering).
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+
+    <div id="DebugPane" class="debug-pane"></div>
+  </body>
+
+  <script type="text/javascript" defer>
+  var DebugPane = document.getElementById('DebugPane');
+
+  var showWinDimensions = function() {
+    DebugPane.textContent = window.innerWidth + ' x ' + window.innerHeight;
+  };
+  showWinDimensions();
+
+  window.addEventListener('resize', showWinDimensions);
+  </script>
+
+</html>
