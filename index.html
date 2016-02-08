@@ -18,6 +18,7 @@
 
     body {
       margin: 0;
+      font-size: 14px;
     }
 
     #DebugPane {
@@ -53,13 +54,31 @@
     }
 
     .button {
+      display: inline-block;
       border-radius: 5px;
       padding: 10px 15px;
-      background-color: #777;
+      margin: 20px 0;
+      background-color: #222;
+      color: #eee;
       text-transform: uppercase;
       line-height: 1em;
       font-size: 11px;
       letter-spacing: 0.025em;
+      cursor: pointer;
+      -webkit-transition: all 0.1s ease;
+      transition: all 0.1s ease;
+    }
+
+    ul {
+      margin: 0 0 30px;
+    }
+
+    li {
+      margin: 10px 0 0;
+    }
+
+    .button:hover {
+      background-color: #666;
     }
 
     .align-center {
@@ -85,12 +104,37 @@
   <body>
     <div class="text-block align-center align-middle">
       <h1>This is some text</h1>
-      <p>There has historically been an issue in which text vertically or center aligned via<p>
-      <code>position: absolute; left: 50%; transform: translateX(-50%);</code>, <code>position: absolute; top: 50%; transform: translateY(-50%);</code>, or <code>position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);</code>
-      <p>resulted in text that was rendered blurry on devices with a pixel ratio of 1. This would be seen when the positioning context containing element is an odd pixel value in the width and/or height (depending on vertical or horizontal centering), resulting in a fractional pixel value for the positioned element's top or left (again, depending on the axis for centering).
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-      <span class="button">Example</span>
+      <p>There has historically been an issue in which text vertically or center aligned via<p>
+
+      <code>position: absolute; left: 50%; transform: translateX(-50%);</code>, <code>position: absolute; top: 50%; transform: translateY(-50%);</code>, or <code>position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);</code>
+
+      <p>resulted in text that was rendered blurry on devices with a pixel ratio of 1. This would be seen when the positioning context containing element is an odd pixel value in the width and/or height (depending on vertical or horizontal centering), resulting in a fractional pixel value for the positioned element's top or left (again, depending on the axis for centering).</p>
+
+      <span class="button">Fake button</span>
+
+      <p>It seems that this behavior has been improved in recent browser releases. Specifically I am seeing the following on a Macbook running OS X 10.10.5:</p>
+
+      <ul>
+        <li><strong>Chrome 48.0.2564.103</strong>
+          <ul>
+            <li>The text seems to only move on whole pixels, producing a &quot;bouncing&quot; effect, particularly noticeable on the headline when changing the window height.</li>
+            <li>The &quot;button&quot; vertical edges remain sharp on resize, but the horizontal edges will alternate between crisp and blurred on the window height resize, exhibiting the issue as it was observed in the past.</li>
+          </ul>
+        </li>
+        <li><strong>Safari 9.0.3 (10601.4.4)</strong>
+          <ul>
+            <li>The text seems to behave as in the Chrome description above.</li>
+            <li>The &quot;button&quot; edges all remain sharp regardless of window dimensions.</li>
+          </ul>
+        </li>
+        <li><strong>Firefox 43.0.4</strong>
+          <ul>
+            <li>The text seems to behave as in the Chrome description above.</li>
+            <li>The &quot;button&quot; edges behave like Safari above.</li>
+          </ul>
+        </li>
+      </ul>
     </div>
 
     <div id="DebugPane" class="debug-pane"></div>
