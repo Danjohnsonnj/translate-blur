@@ -24,17 +24,27 @@
       position: fixed;
       bottom: 20px;
       right: 20px;
-      text-align: right;
+      text-align: center;
       padding: 10px;
+      font-size: 12px;
       color: rgba(255, 255, 255, 0.8);
-      background-color: rgba(0, 0, 0, 0.8);
+      background-color: rgba(0, 0, 0, 0.6);
     }
 
-    pre {
+    #DebugPane:before {
+      content: 'Window dimensions';
+      display: block;
+      border-bottom: 1px dotted rgba(255, 255, 255, 0.5);
+      margin-bottom: 7px;
+    }
+
+    code {
       display: inline-block;
       background: rgba(20, 20, 20, 0.2);
       padding: 3px 5px;
       font-family: Courier, serif;
+      line-height: 1em;
+      margin: 0 0 0.5em 0;
     }
 
     .text-block {
@@ -66,8 +76,8 @@
     <div class="text-block align-center align-middle">
       <h1>This is some text</h1>
       <p>There has historically been an issue in which text vertically or center aligned via<p>
-      <pre>position: absolute; left: 50%; transform: translateX(-50%);</pre>, <pre>position: absolute; top: 50%; transform: translateY(-50%);</pre>, or <pre>position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);</pre>
-      <p>resulted in text that was rendered blurry. This would be seen when the positioning context containing element is an odd pixel vlaue in the width and/or height (depending on vertical or horizontal centering), resulting in a fractional pixel value for the positioned element's top or left (again, depending on the axis for centering).
+      <code>position: absolute; left: 50%; transform: translateX(-50%);</code>, <code>position: absolute; top: 50%; transform: translateY(-50%);</code>, or <code>position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);</code>
+      <p>resulted in text that was rendered blurry on devices with a pixel ratio of 1. This would be seen when the positioning context containing element is an odd pixel vlaue in the width and/or height (depending on vertical or horizontal centering), resulting in a fractional pixel value for the positioned element's top or left (again, depending on the axis for centering).
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </div>
 
